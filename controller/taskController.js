@@ -12,9 +12,9 @@ const addTask = async (req,res)=>{
       
        const values=[heading, description, date, priority, image]
      
-       excQuery(insertQuery,values).then((res)=>{
-        console.log(res);
-       
+       excQuery(insertQuery,values).then((result)=>{
+        console.log(result);
+        res.status(200).json({ message: "success", data: result });
        })
     }
     catch{
@@ -78,10 +78,10 @@ const editTask = async (req,res)=>{
        const insertQuery = `UPDATE tasks SET heading = ?, description = ?, date = ?, priority = ?, image = ? WHERE id = ?`;
       
        const values = [heading, description, date, priority, image, id];
-       console.log("kokoko");
-       excQuery(insertQuery,values).then((res)=>{
-        console.log(res);
        
+       excQuery(insertQuery,values).then((result)=>{
+        console.log(result);
+        res.status(200).json({ message: "success", data: result });
        })
     }
     catch{
