@@ -24,7 +24,7 @@ const addTask = async (req,res)=>{
 
 const getTasks=async(req,res)=>{
     try{
-        const getQuery=`SELECT * FROM tasks`
+        const getQuery=`SELECT * FROM tasks ORDER BY date DESC`
         const values=[]
         excQuery(getQuery,values).then((result)=>{
             console.log(result);
@@ -99,7 +99,7 @@ const editTask = async (req,res)=>{
         if (priority && priority.toLowerCase() === 'all') {
             getQuery = `SELECT * FROM tasks`;
         } else {
-            getQuery = `SELECT * FROM tasks WHERE priority = ?`;
+            getQuery = `SELECT * FROM tasks WHERE priority = ? ORDER BY date DESC`;
             values = [priority];
         }
         const result = await excQuery(getQuery, values).then((result)=>{
