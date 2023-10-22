@@ -4,14 +4,14 @@ import excQuery from "../config/connection.js";
 
 const addTask = async (req,res)=>{
     try{
-        console.log("ghjklkjhgfghjk");
+        
     //    const taskdata=req.body
        const { heading, description,date,priority,image} = req.body;
       
        const insertQuery = `INSERT INTO tasks (heading,description,date,priority,image) VALUES (?, ?, ?, ?, ?)`;
       
        const values=[heading, description, date, priority, image]
-       console.log("kokoko");
+     
        excQuery(insertQuery,values).then((res)=>{
         console.log(res);
        
@@ -39,7 +39,7 @@ const getTasks=async(req,res)=>{
 const getSingle=async(req,res)=>{
     try{
          const id=req.params.taskId
-         console.log("kjkjkj",id);
+        
         const getQuery=`SELECT * FROM tasks WHERE id=?`
         const values=[id]
         excQuery(getQuery,values).then((result)=>{
@@ -55,7 +55,7 @@ const getSingle=async(req,res)=>{
 const deleteTask=async(req,res)=>{
     try{
         const {id}=req.body
-        console.log("aaaaaaa",id);
+       
         const deleteQuery=`DELETE FROM tasks WHERE id=?`
         const values=[id]
         excQuery(deleteQuery,values).then((result)=>{
@@ -70,10 +70,10 @@ const deleteTask=async(req,res)=>{
 }
 const editTask = async (req,res)=>{
     try{
-        console.log("ghjklkjhgfghjk");
+       
     //    const taskdata=req.body
        const {id, heading, description,date,priority,image} = req.body;
-       console.log("ooohhhoo",req.body);
+      
       
        const insertQuery = `UPDATE tasks SET heading = ?, description = ?, date = ?, priority = ?, image = ? WHERE id = ?`;
       
@@ -91,11 +91,11 @@ const editTask = async (req,res)=>{
 
  const getPriorityWise= async(req,res)=>{
     try {
-        console.log("varshaaaaaaaaaaaaaaaaaaaaaaaaa");
+       
         let getQuery;
         let values = [];
         const {priority}=req.body
-        console.log("jpoooooooooooooooooooooyyyyyyyyyyyy",priority);
+       
         if (priority && priority.toLowerCase() === 'all') {
             getQuery = `SELECT * FROM tasks`;
         } else {
